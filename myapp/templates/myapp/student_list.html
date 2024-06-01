@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <style>
+        /* Define your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .add-link {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student List</h1>
+    <ul>
+        {% for student in students %}
+            <li>{{ student.name }} ({{ student.department.name }}) - <a href="{% url 'update_student' student.pk %}">Update</a> | <a href="{% url 'delete_student' student.pk %}">Delete</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_student' %}" class="add-link">Add Student</a>
+</body>
+</html>

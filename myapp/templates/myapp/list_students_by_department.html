@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Students by Department</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        li:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Students by Department</h1>
+    {% for department, students in students_by_department.items %}
+        <h2>{{ department.name }}</h2>
+        <ul>
+            {% for student in students %}
+                <li>{{ student.name }} (Age: {{ student.age }})</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    <a href="{% url 'alldepartment' %}" class="add-button">list of  department</a>
+    <br>
+    <br>
+    
+    <a href="{% url 'student_list' %}" class="add-button">list of  student</a>
+
+</body>
+</html>
